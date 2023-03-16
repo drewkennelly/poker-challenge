@@ -1,5 +1,13 @@
-describe("Main test suite", () => {
-  it("True to be true", () => {
-    expect(true).toBe(true);
-  });
+import { handRank, compareHands, parseHand, Hand } from "../index";
+
+describe("parseHand", () => {
+  
+});
+
+describe("handRank", () => {
+  
+});
+
+describe("compareHands", () => {
+  
 });
