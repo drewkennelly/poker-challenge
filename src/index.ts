@@ -76,7 +76,34 @@ export function handRank(hand: Hand): HandRank {
 }
 
 // Function to compare two hands and determine the winner
-export function compareHands(hand1: Hand, hand2: Hand): number {}
+export function compareHands(hand1: Hand, hand2: Hand): number {
+  // Calculate the rank of each hand
+  const handRank1 = handRank(hand1);
+  const handRank2 = handRank(hand2);
+
+  // Compare hand ranks and return the winner (1 for hand1, 2 for hand2)
+  if (handRank1.rank > handRank2.rank) {
+    return 1;
+  }
+  if (handRank1.rank < handRank2.rank) {
+    return 2;
+  }
+
+  // If hand ranks are equal, compare individual cards in ranked order
+  for (let i = 0; i < handRank1.cards.length; i += 1) {
+    // If a card in hand1 has a higher value than the corresponding card in hand2, hand1 wins
+    if (handRank1.cards[i][0] > handRank2.cards[i][0]) {
+      return 1;
+    }
+    // If a card in hand1 has a lower value than the corresponding card in hand2, hand2 wins
+    if (handRank1.cards[i][0] < handRank2.cards[i][0]) {
+      return 2;
+    }
+  }
+
+  // If all card values are equal, it's a tie
+  return 0;
+}
 
 // Function to parse a hand from an array of card strings and return a Hand object
 export function parseHand(cards: string[]): Hand {}

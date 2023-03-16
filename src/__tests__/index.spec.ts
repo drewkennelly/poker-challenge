@@ -26,4 +26,23 @@ describe("handRank", () => {
   });
 });
 
-describe("compareHands", () => {});
+describe("compareHands", () => {
+  it("compares two hands and returns the winner", () => {
+    const hand1: Hand = [
+      [1, "D"],
+      [8, "C"],
+      [13, "S"],
+      [13, "H"],
+      [13, "C"],
+    ];
+    const hand2: Hand = [
+      [2, "D"],
+      [3, "D"],
+      [4, "D"],
+      [10, "D"],
+      [11, "D"],
+    ];
+
+    expect(compareHands(hand1, hand2)).toBe(2);
+  });
+});
