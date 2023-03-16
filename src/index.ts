@@ -106,7 +106,23 @@ export function compareHands(hand1: Hand, hand2: Hand): number {
 }
 
 // Function to parse a hand from an array of card strings and return a Hand object
-export function parseHand(cards: string[]): Hand {}
+export function parseHand(cards: string[]): Hand {
+  return (
+    cards
+      .map((card) => {
+        // Convert card value character to numeric index
+        const value = "23456789TJQKA".indexOf(card[0]);
+
+        // Extract card suit character
+        const suit = card[1];
+
+        // Return the card as a tuple [value, suit]
+        return [value, suit] as Card;
+      })
+      // Sort the cards in the hand by their value
+      .sort((a, b) => a[0] - b[0])
+  );
+}
 
 // Main function to execute the poker hand comparison
 function main() {

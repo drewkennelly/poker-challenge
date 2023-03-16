@@ -1,6 +1,19 @@
 import { handRank, compareHands, parseHand, Hand } from "../index";
 
-describe("parseHand", () => {});
+describe("parseHand", () => {
+  it("parses a hand string into an array of cards with numeric values", () => {
+    const input = ["2D", "9C", "AS", "AH", "AC"];
+    const expected: Hand = [
+      [0, "D"],
+      [7, "C"],
+      [12, "S"],
+      [12, "H"],
+      [12, "C"],
+    ];
+
+    expect(parseHand(input)).toEqual(expected);
+  });
+});
 
 describe("handRank", () => {
   it("calculates the rank of a hand", () => {
