@@ -131,6 +131,34 @@ function main() {
     .readFileSync("./bin/poker-hands.txt", "utf-8")
     .trim()
     .split("\n");
+
+  // Initialize win counters for each player
+  let player1Wins = 0;
+  let player2Wins = 0;
+
+  // Iterate through each line of input
+  input.forEach((line) => {
+    // Split the line into card strings
+    const cards = line.split(" ");
+
+    // Parse hands for each player
+    const hand1 = parseHand(cards.slice(0, 5));
+    const hand2 = parseHand(cards.slice(5));
+
+    // Compare the two hands and determine the winner
+    const winner = compareHands(hand1, hand2);
+
+    // Update the win counters based on the winner
+    if (winner === 1) {
+      player1Wins += 1;
+    } else if (winner === 2) {
+      player2Wins += 1;
+    }
+  });
+
+  // Output the number of hands won by each player
+  console.log(`Player 1: ${player1Wins} hands`);
+  console.log(`Player 2: ${player2Wins} hands`);
 }
 
 // Run
